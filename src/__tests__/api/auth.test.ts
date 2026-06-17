@@ -11,7 +11,7 @@ describe("getAPIKey", () => {
   });
 
   it("returns null when authorization header has no key", () => {
-    expect(getAPIKey({ authorization: "ApiKey" })).not.toBeNull();
+    expect(getAPIKey({ authorization: "ApiKey" })).toBeNull();
   });
 
   it("returns the api key when authorization header is valid", () => {
