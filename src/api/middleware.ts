@@ -4,9 +4,13 @@ import { getUser } from "../db/queries/users.js";
 import { User } from "../db/schema.js";
 import { getAPIKey } from "./auth.js";
 
-export function middlewareAuth(
-  handler: (req: Request, res: Response, user: User) => void,
-) {
+type AuthenticatedHandler = (
+  req: Request,
+  res: Response,
+  user: User,
+) => void | Promise<void>;
+
+export function middlewareAuth(handler: AuthenticatedHandler) {
   return async (req: Request, res: Response) => {
     try {
       const apiKey = getAPIKey(req.headers);
@@ -17,11 +21,11 @@ export function middlewareAuth(
 
       const user = await getUser(apiKey);
       if (!user) {
-        respondWithError(res, 404, "Couldn't get user");
+        respondWithError(res, 401, "Couldn't get user");
         return;
       }
 
-      handler(req, res, user);
+      await handler(req, res, user);
     } catch (err) {
       respondWithError(res, 500, "Couldn't authenticate user", err);
     }
