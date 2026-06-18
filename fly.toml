@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for learn-cicd-typescript-starter-vivid-forest-8123 on 2026-06-18T21:18:53+05:00
+# fly.toml app configuration file generated for learn-cicd-typescript-starter-lucid-sunrise-7871 on 2026-06-18T22:08:33+05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'learn-cicd-typescript-starter-vivid-forest-8123'
+app = 'learn-cicd-typescript-starter-lucid-sunrise-7871'
 primary_region = 'arn'
 
 [build]
