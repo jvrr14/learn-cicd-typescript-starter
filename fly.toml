@@ -8,6 +8,9 @@ primary_region = 'arn'
 
 [build]
 
+[deploy]
+  release_command = "sh -c 'test -z \"$DATABASE_URL\" || npm run db:migrate'"
+
 [env]
   PORT = '3000'
 

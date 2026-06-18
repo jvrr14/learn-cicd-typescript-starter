@@ -8,6 +8,7 @@ if (config.db.url) {
   conn = drizzle({
     connection: {
       url: config.db.url,
+      authToken: config.db.authToken,
     },
     schema: schema,
   });

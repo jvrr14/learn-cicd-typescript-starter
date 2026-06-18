@@ -13,6 +13,7 @@ type APIConfig = {
 
 type DBConfig = {
   url: string | undefined;
+  authToken: string | undefined;
 };
 
 export const config: Config = {
@@ -22,5 +23,6 @@ export const config: Config = {
   },
   db: {
     url: process.env.DATABASE_URL,
+    authToken: process.env.DATABASE_AUTH_TOKEN,
   },
 };
